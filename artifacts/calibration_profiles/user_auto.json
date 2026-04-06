@@ -1,0 +1,20 @@
+{
+  "user_id": "user_auto",
+  "calibration_phrases": [
+    "Open the Chrome browser",
+    "Copy the selected text",
+    "Launch Visual Studio Code application",
+    "Click on the next button",
+    "Close the current window"
+  ],
+  "voice_activation_threshold": 60.0,
+  "vad_aggressiveness": 2,
+  "silence_threshold": 20,
+  "ambient_noise_level": 100.0,
+  "sample_count": 0,
+  "language": "auto",
+  "noise_mean": 0.0,
+  "noise_variance": 0.0,
+  "last_recalibration": 0.0,
+  "recalibration_count": 0
+}

@@ -1,0 +1,126 @@
+{
+  "description": "Generic Deep Link Registry for common SaaS applications. Supports URL schemes and web URLs for direct app navigation.",
+  "version": "1.0.0",
+  "apps": {
+    "zoom": {
+      "name": "Zoom",
+      "description": "Zoom video conferencing meetings",
+      "url_scheme": "zoommtg://zoom.us/join?confno={id}",
+      "web_fallback": "https://zoom.us/j/{id}",
+      "examples": [
+        "zoommtg://zoom.us/join?confno=123456789",
+        "zoommtg://zoom.us/join?confno=123-456-789"
+      ]
+    },
+    "notion": {
+      "name": "Notion",
+      "description": "Notion workspace pages",
+      "url_scheme": "notion://www.notion.so/{slug}",
+      "web_fallback": "https://www.notion.so/{slug}",
+      "examples": [
+        "notion://www.notion.so/myworkspace/page-id-123",
+        "notion://www.notion.so/My-Page-123abc"
+      ]
+    },
+    "spotify": {
+      "name": "Spotify",
+      "description": "Spotify tracks, albums, playlists, and artists",
+      "url_scheme": "spotify:{type}:{id}",
+      "web_fallback": "https://open.spotify.com/{type}/{id}",
+      "types": ["track", "album", "playlist", "artist"],
+      "examples": [
+        "spotify:track:3n3Ppam7vgaVa1iaRUc9Lp",
+        "spotify:album:1DFixLWuPkv3KT3TnV35m3",
+        "spotify:playlist:37i9dQZF1DXcBWIGoYBM5M"
+      ]
+    },
+    "slack": {
+      "name": "Slack",
+      "description": "Slack channels and direct messages",
+      "url_scheme": "slack://channel?team={team_id}&id={channel_id}",
+      "web_fallback": "https://app.slack.com/client/{team_id}/{channel_id}",
+      "examples": [
+        "slack://channel?team=T123ABC&id=C456DEF",
+        "slack://open?team=T123ABC&id=D789GHI"
+      ]
+    },
+    "teams": {
+      "name": "Microsoft Teams",
+      "description": "Microsoft Teams meetings and chats",
+      "url_scheme": "msteams:/l/meetup-join/{id}",
+      "web_fallback": "https://teams.microsoft.com/l/meetup-join/{id}",
+      "examples": [
+        "msteams:/l/meetup-join/19%3ameeting_abc123",
+        "msteams:/l/chat/0/0?users=user@example.com"
+      ]
+    },
+    "jira": {
+      "name": "Jira",
+      "description": "Jira issues and boards",
+      "url_scheme": "jira://issue/{id}",
+      "web_fallback": "https://{domain}.atlassian.net/browse/{id}",
+      "examples": [
+        "jira://issue/PROJ-123",
+        "https://mycompany.atlassian.net/browse/PROJ-123"
+      ]
+    },
+    "trello": {
+      "name": "Trello",
+      "description": "Trello boards and cards",
+      "url_scheme": "trello://card/{id}",
+      "web_fallback": "https://trello.com/c/{id}",
+      "examples": [
+        "trello://card/abc123def",
+        "https://trello.com/c/abc123def/card-name"
+      ]
+    },
+    "figma": {
+      "name": "Figma",
+      "description": "Figma design files",
+      "url_scheme": "figma://file/{id}",
+      "web_fallback": "https://www.figma.com/file/{id}",
+      "examples": [
+        "figma://file/abc123",
+        "https://www.figma.com/file/abc123/Design-Name"
+      ]
+    },
+    "discord": {
+      "name": "Discord",
+      "description": "Discord servers and channels",
+      "url_scheme": "discord://discord.com/channels/{server_id}/{channel_id}",
+      "web_fallback": "https://discord.com/channels/{server_id}/{channel_id}",
+      "examples": [
+        "discord://discord.com/channels/123456789/987654321"
+      ]
+    },
+    "github": {
+      "name": "GitHub",
+      "description": "GitHub repositories and issues",
+      "url_scheme": "github://github.com/{owner}/{repo}",
+      "web_fallback": "https://github.com/{owner}/{repo}",
+      "examples": [
+        "github://github.com/microsoft/vscode",
+        "https://github.com/microsoft/vscode/issues/123"
+      ]
+    },
+    "vscode": {
+      "name": "Visual Studio Code",
+      "description": "VS Code workspace and files",
+      "url_scheme": "vscode://file/{path}",
+      "web_fallback": null,
+      "examples": [
+        "vscode://file//Users/username/project/file.js",
+        "vscode://vscode.git/clone?url={repo_url}"
+      ]
+    },
+    "calendar": {
+      "name": "Calendar",
+      "description": "Calendar events (macOS/iOS)",
+      "url_scheme": "x-apple-calevent://{event_id}",
+      "web_fallback": null,
+      "examples": [
+        "x-apple-calevent://event-id-123"
+      ]
+    }
+  }
+}

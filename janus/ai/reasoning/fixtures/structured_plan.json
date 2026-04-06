@@ -1,0 +1,31 @@
+{
+  "description": "Fixtures for structured plan (V3) mock responses",
+  "patterns": {
+    "plan_prompt": {
+      "keywords": ["génère le plan json", "steps", "module"],
+      "apps": ["chrome", "safari"],
+      "response_template": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {
+              "app_name": "{app_name}"
+            },
+            "context": {
+              "app": null,
+              "surface": null,
+              "url": null,
+              "domain": null,
+              "thread": null,
+              "record": null
+            }
+          }
+        ]
+      },
+      "fallback_response": {
+        "steps": []
+      }
+    }
+  }
+}

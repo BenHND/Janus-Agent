@@ -1,0 +1,13 @@
+{
+  "description": "Fixtures for ReAct decision mock responses",
+  "patterns": {
+    "react_prompt": {
+      "keywords": ["ta décision", "your decision", "contexte visuel", "visual context"],
+      "response": {
+        "action": "done",
+        "args": {},
+        "reasoning": "Mock - goal achieved"
+      }
+    }
+  }
+}

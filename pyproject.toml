@@ -1,0 +1,235 @@
+[project]
+name = "janus"
+version = "1.0.0"
+description = "Voice-controlled computer automation agent for macOS"
+authors = [
+    {name = "BenHND", email = "ben@example.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+keywords = ["voice-control", "automation", "ai", "assistant", "macos"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Desktop Environment",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+# Core dependencies (base requirements.txt)
+dependencies = [
+    # Phase 0 - Core Voice Recognition
+    "openai-whisper==20231117",  # Whisper-based STT (fallback)
+    "faster-whisper>=1.2.1",  # Optimized Whisper with CTranslate2 (4x faster)
+    "numpy==1.26.3",  # Array processing (required by whisper)
+    "webrtcvad==2.0.10",  # Voice Activity Detection
+    
+    # TICKET-P3-02: Wake Word Detection for Hands-Free Mode
+    "openwakeword>=0.6.0; python_version < '3.12'",  # Lightweight wake word detection (tflite-runtime limited to py<3.12)
+    "onnxruntime>=1.23.2",  # Required by openwakeword for efficient inference
+    
+    # TICKET-STT-002: Voice Fingerprinting (Speaker Verification)
+    "resemblyzer==0.1.4",  # Lightweight speaker verification for voice filtering
+    
+    # Phase 0 - Text-to-Speech (Neural, High-Quality, Cross-Platform)
+    "piper-tts>=1.3.0",  # Piper TTS for high-quality neural voices (offline, fast, cross-platform)
+    "soundfile>=0.13.1",  # Audio file I/O (required by piper-tts for playback)
+    
+    # Phase 0 - Mac Automation
+    "pyautogui==0.9.54",  # GUI automation
+    "pyobjc-framework-Cocoa==10.1; sys_platform == 'darwin'",  # AppleScript on Mac
+    "pyobjc-framework-ApplicationServices==10.1; sys_platform == 'darwin'",  # Mac automation APIs
+    "pyobjc-framework-Quartz==10.1; sys_platform == 'darwin'",  # VISION-FOUNDATION-002: Fast screenshot on Mac
+    "pyobjc-framework-Vision==10.1; sys_platform == 'darwin'",  # TICKET-OCR-NATIVE: Native macOS OCR
+    "pynput==1.7.6",  # Alternative input control
+    
+    # Platform-specific OCR engines (TICKET-OCR-NATIVE)
+    "winsdk>=1.0.0b10; sys_platform == 'win32'",  # Windows native OCR
+    "rapidocr-onnxruntime>=1.3.0; sys_platform == 'linux'",  # Linux lightweight OCR
+    
+    # Phase 0 - Core Utilities
+    "pillow==10.2.0",  # Screenshot/image handling
+    "pyperclip==1.8.2",  # Clipboard operations
+    "python-dotenv>=1.0.1",  # Environment configuration
+    "platformdirs>=4.5.0",  # Cross-platform directory paths
+    "cachetools>=5.3.0",  # TTL cache for memory leak fix (TICKET B1)
+    
+    # Security - Encryption for sensitive data
+    "cryptography>=41.0.0",  # Encryption/decryption for database secrets
+    
+    # Phase 11 - Monitoring
+    "psutil>=5.9.8",  # System and process monitoring
+    "sentry-sdk>=2.0.0",  # TICKET-OPS-002: Crash reporting and error telemetry
+    
+    # Phase 12 - Extensibility
+    "watchdog>=4.0.1",  # File system monitoring for hot-reload
+    
+    # UI - Cross-platform overlay
+    "PySide6>=6.10.0",  # Qt6 for cross-platform UI support
+    
+    # Additional core dependencies
+    "torch>=2.0.0,<2.5",  # PyTorch for neural models (compatible with openai-whisper)
+    "tiktoken==0.8.0",  # Tokenization for OpenAI models
+    "requests>=2.32.3",  # HTTP requests
+    "tqdm>=4.67.0",  # Progress bars
+    "huggingface-hub>=0.23.2,<1.0",  # Model hub integration (compatible with transformers)
+]
+
+[project.optional-dependencies]
+# LLM Integration Dependencies (Optional)
+llm = [
+    # Phase 2 - LLM APIs
+    "openai>=1.54.4",  # OpenAI GPT-4/GPT-3.5-turbo
+    "anthropic>=0.39.0",  # Anthropic Claude API
+    "mistralai>=1.2.3",  # Mistral AI API
+    
+    # Phase 15 - Local LLM
+    "llama-cpp-python>=0.3.1",  # Lightweight local LLM for semantic correction
+]
+
+# Vision and AI Dependencies (Optional)
+vision = [
+    # Phase 3 - OCR Fallback (only needed if native OCR unavailable)
+    # TICKET-SWITCH-NATIVE: These are fallback-only, not loaded by default
+    "pytesseract>=0.3.13",  # Tesseract OCR wrapper (fallback for non-native platforms)
+    "easyocr>=1.7.2",  # EasyOCR for text recognition (legacy fallback, 2GB+ RAM)
+    
+    # Phase 18 - Visual Fallback
+    # NOTE: opencv-python is currently unused (no cv2 imports found in codebase)
+    # TODO: Remove in future version if template matching not needed
+    "opencv-python>=4.10.0.84",  # Computer vision for template matching (currently unused)
+    "mss>=9.0.2",  # Fast screenshot capture
+    
+    # Phase 22 - Vision Cognitive & AI
+    "transformers>=4.46.3",  # HuggingFace models (BLIP-2, CLIP, Florence-2)
+    "sentencepiece>=0.2.0",  # Required by some transformers models
+    "accelerate>=1.1.1",  # Faster model loading and inference
+    
+    # TICKET-302: Florence-2 ultra-light vision support
+    "einops>=0.8.0",  # Required for vision transformer models (Florence-2)
+    "timm>=1.0.12",  # PyTorch Image Models (required by Florence-2)
+    
+    # OmniParser UI Detection (optional)
+    "ultralytics>=8.0.0",  # YOLOv8 for UI element detection in OmniParser
+]
+
+# Memory and semantic search (Optional - heavy dependencies)
+semantic = [
+    # TICKET-MEM-001: Semantic Memory (RAG Local)
+    "chromadb>=0.4.0",  # Vector database for semantic search
+    "sentence-transformers>=3.3.1",  # Embedding models for semantic search (includes all-MiniLM-L6-v2)
+]
+
+# Audio dependencies (requires system libraries - portaudio)
+audio = [
+    "pyaudio==0.2.14",  # Microphone input (requires portaudio system library)
+]
+
+# Microsoft 365 integration (Optional)
+# TICKET-APP-001: Native Microsoft 365 / Outlook connector
+office365 = [
+    "O365>=2.0.36",  # Microsoft 365 API integration for calendar and email
+]
+
+# Salesforce CRM integration (Optional)
+# TICKET-BIZ-001: Salesforce Native Connector (CRM)
+salesforce = [
+    "simple-salesforce>=1.12.6",  # Salesforce API integration for CRM data
+]
+
+# Messaging integrations (Optional)
+# TICKET-BIZ-002: Unified Messaging API (Slack & Teams)
+messaging = [
+    "slack_sdk>=3.33.5",  # Slack API integration for messaging
+    "msal>=1.31.1",  # Microsoft Authentication Library for Teams (Microsoft Graph API)
+]
+
+# Test dependencies
+test = [
+    # Core test framework
+    "pytest>=7.4.0",
+    "pytest-timeout>=2.2.0",
+    "pytest-xdist>=3.5.0",
+    "pytest-asyncio>=0.21.0",
+    
+    # Additional test utilities
+    "coverage>=7.3.0",
+]
+
+# Development dependencies
+dev = [
+    # Code formatting and linting
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+    
+    # Pre-commit hooks
+    "pre-commit>=3.0.0",
+]
+
+# Full installation (all features)
+full = [
+    "janus[llm,vision,semantic,audio,office365,salesforce,test,dev]",
+]
+
+[project.urls]
+Homepage = "https://github.com/BenHND/Janus"
+Documentation = "https://github.com/BenHND/Janus/tree/main/docs"
+Repository = "https://github.com/BenHND/Janus"
+"Bug Tracker" = "https://github.com/BenHND/Janus/issues"
+
+[project.scripts]
+janus = "apps.cli.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.black]
+line-length = 100
+target-version = ['py310', 'py311', 'py312']
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
+
+[tool.coverage.run]
+source = ["janus"]
+omit = ["tests/*", "examples/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["janus"]

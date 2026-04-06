@@ -1,0 +1,25 @@
+# Test dependencies for Janus
+# Install with: pip install -r requirements-test.txt
+
+# Core test framework
+pytest>=7.4.0
+pytest-timeout>=2.2.0
+pytest-xdist>=3.5.0
+pytest-asyncio>=0.21.0
+
+# Additional test utilities
+coverage>=7.3.0
+
+# Core dependencies needed for tests (cross-platform subset)
+psutil>=5.9.0
+python-dotenv>=1.0.0
+watchdog>=3.0.0
+pillow>=10.2.0
+platformdirs>=4.5.0
+soundfile>=0.13.1
+pyside6>=6.10.0
+numpy>=1.26.3
+
+# Note: macOS-specific dependencies (pyautogui, pyobjc, etc.) are not included
+# as they cannot be installed on Linux CI environments. Tests requiring these
+# should be marked with @pytest.mark.skipif for non-macOS platforms.

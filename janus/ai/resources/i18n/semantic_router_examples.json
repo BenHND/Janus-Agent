@@ -1,0 +1,38 @@
+{
+  "NOISE": [
+    "ok",
+    "merci",
+    "super",
+    "d'accord",
+    "oui",
+    "non",
+    "bye",
+    "salut",
+    "c'est bon",
+    "parfait"
+  ],
+  "CHAT": [
+    "comment tu vas ?",
+    "explique-moi",
+    "pourquoi",
+    "c'est quoi",
+    "raconte une blague",
+    "donne-moi un conseil",
+    "peux-tu m'aider à comprendre",
+    "résume ceci",
+    "quelle est la météo",
+    "tu penses quoi de"
+  ],
+  "ACTION": [
+    "ouvre Safari",
+    "va sur YouTube",
+    "ouvre VS Code",
+    "copie le texte",
+    "colle",
+    "clique sur le bouton",
+    "cherche sur Google",
+    "ferme la fenêtre",
+    "prends une capture d'écran",
+    "envoie un message"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "legacy_scan_matches": 0,
+  "legacy_scan_details": [],
+  "entrypoints_passed": true,
+  "llm_calls": 0,
+  "vision_calls": 0,
+  "actions_count": 0,
+  "replans": 0,
+  "stagnation_events": 0,
+  "total_time_ms": 0,
+  "model_name": "N/A",
+  "toolset_hash": "N/A",
+  "timestamp": "2025-12-15T08:58:48.132125",
+  "test_run": "verification_007"
+}

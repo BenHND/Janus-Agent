@@ -1,0 +1,38 @@
+Analyse ce texte pour détecter si il indique une erreur ou un échec.
+
+**Texte à analyser :** {{ text }}
+
+**Instructions :**
+1. Lis attentivement le texte fourni
+2. Détermine s'il contient des indicateurs d'erreur, d'échec ou de problème
+3. Les indicateurs typiques incluent : "erreur", "échec", "impossible", "introuvable", "non valide", etc.
+
+**IMPORTANT : Répondre UNIQUEMENT avec du JSON valide dans ce format exact :**
+
+{
+  "has_error": true,
+  "reason": "Explication claire de l'erreur détectée"
+}
+
+Ou si aucune erreur n'est détectée :
+
+{
+  "has_error": false,
+  "reason": "Le texte semble normal, aucune indication d'erreur"
+}
+
+**Exemples de réponses :**
+- Erreur détectée :
+{
+  "has_error": true,
+  "reason": "Le texte contient 'Page introuvable' indiquant une erreur 404"
+}
+
+- Pas d'erreur :
+{
+  "has_error": false,
+  "reason": "Le texte est informatif et ne signale aucun problème"
+}
+
+**Ta réponse JSON :**
+

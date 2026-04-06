@@ -1,0 +1,17 @@
+{
+  "description": "Fixtures for V4 analysis format mock responses",
+  "patterns": {
+    "v4_prompt": {
+      "keywords": ["v4", "analysis"],
+      "response": {
+        "analysis": {
+          "user_intent": "Generic",
+          "detected_entities": [],
+          "missing_info": [],
+          "risk_assessment": "No risk"
+        },
+        "plan": []
+      }
+    }
+  }
+}

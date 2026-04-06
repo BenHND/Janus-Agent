@@ -1,0 +1,19 @@
+# LLM Integration Dependencies (Optional)
+# This file contains dependencies for advanced LLM features
+# Use: pip-compile requirements-llm.in to generate requirements-llm.txt lockfile
+
+# Include base dependencies
+-c requirements.txt
+
+# Phase 2 - LLM APIs
+openai>=1.3.0  # OpenAI GPT-4/GPT-3.5-turbo
+anthropic>=0.18.0  # Anthropic Claude API
+mistralai>=0.1.0  # Mistral AI API
+
+# Phase 15 - Local LLM
+llama-cpp-python>=0.2.0  # Lightweight local LLM for semantic correction
+
+# Phase 16 - Enhanced STT
+faster-whisper>=0.10.0  # Faster Whisper with CTranslate2 backend
+av<13,>=11.0  # Compatible with faster-whisper (must be <13)
+cryptography>=41.0.0  # AES256 encryption for voice cache

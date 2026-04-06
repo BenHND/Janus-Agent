@@ -1,0 +1,216 @@
+[features]
+enable_llm_reasoning = true
+enable_vision = true
+enable_learning = true
+enable_semantic_correction = true
+vision_decision_enabled = true
+vision_verification_enabled = false
+trace_screenshots_enabled = false
+enable_context_router = false
+# P2 Features
+enable_dry_run = true
+enable_rollback = true
+enable_rate_limiting = true
+enable_offline_mode = true
+
+[llm]
+provider = ollama
+model = qwen2.5:7b-instruct
+fallback_providers = 
+model_path = 
+temperature = 0.7
+max_tokens = 2000
+request_timeout = 120
+retry_timeout = 60
+enable_cache = true
+cache_ttl = 300
+auto_confirm_safe = true
+
+[whisper]
+model_size = small
+use_faster_whisper = true
+models_dir = models/whisper
+enable_context_buffer = true
+enable_corrections = true
+beam_size = 5
+semantic_correction_model_path = 
+natural_reformatter_model_path = 
+use_mlx_whisper = true
+mlx_batch_size = 12
+mlx_quant = 
+
+[audio]
+sample_rate = 16000
+chunk_duration_ms = 20
+vad_aggressiveness = 0
+silence_threshold = 40
+enable_vad_filter = false
+vad_min_silence_duration_ms = 1000
+vad_speech_pad_ms = 800
+
+[speaker_verification]
+enabled = false
+embedding_path = user_data/user_voice.npy
+similarity_threshold = 0.75
+
+[wakeword]
+enabled = false
+engine = openwakeword
+model = models/wakeword/hey_janus.onnx
+threshold = 0.1
+cooldown_ms = 1000
+
+[language]
+default = fr
+
+[automation]
+safety_delay = 0.5
+pyautogui_pause = 0.1
+ui_default_timeout = 10.0
+ui_max_retries = 2
+ui_retry_delay = 0.5
+ui_action_delay = 0.3
+ui_wait_poll_interval = 0.5
+ui_applescript_timeout = 10.0
+ui_enable_vision = true
+
+[execution]
+continue_on_validation_error = false
+attempt_context_recovery = true
+context_recovery_timeout = 2.0
+max_retries = 1
+enable_replanning = false
+enable_vision_recovery = true
+use_dynamic_execution = true
+
+[session]
+state_file = session_state.json
+max_history = 50
+
+[calibration]
+profile_dir = calibration_profiles
+
+[audio_logging]
+enable_logging = false
+log_dir = audio_logs
+max_logs = 100
+enable_audio_save = true
+auto_delete_days = 0
+
+[vision]
+models_dir = models/vision
+vision_engine = florence2
+
+[async_vision_monitor]
+enable_monitor = false
+check_interval_ms = 1000
+enable_popup_detection = true
+enable_error_detection = true
+
+[tts]
+enable_tts = true
+engine = piper
+piper_model_path = 
+rate = 180
+volume = 0.7
+lang = fr-FR
+auto_confirmations = true
+verbosity = compact
+avoid_feedback_loop = true
+
+[database]
+path = data/janus.db
+enable_wal = true
+journal_mode = WAL
+synchronous = NORMAL
+cache_size = -2000
+
+[ui]
+theme = dark
+
+[logging]
+level = INFO
+format = %(asctime)s - %(name)s - %(levelname)s - %(message)s
+enable_structured = true
+log_to_database = true
+log_to_console = true
+log_to_file = false
+log_file = janus.log
+debug = true
+
+[telemetry]
+crash_reporting_consent = true
+
+# ============================================================================
+# P2 FEATURES: Dry-Run, Rollback, Rate Limiting, Offline Mode
+# ============================================================================
+
+[rate_limit]
+# Enable rate limiting to prevent overload on external providers
+enabled = true
+
+# Global rate limits (applies to all actions)
+global_max_requests = 100
+global_time_window_seconds = 60.0
+global_burst_allowance = 20
+
+# Per-agent rate limits (default for all agents)
+agent_max_requests = 30
+agent_time_window_seconds = 60.0
+agent_burst_allowance = 5
+
+# Provider-specific rate limits
+# Email provider (SMTP, Microsoft 365, etc.)
+email_max_requests = 10
+email_time_window_seconds = 60.0
+
+# Slack messaging
+slack_max_requests = 20
+slack_time_window_seconds = 60.0
+
+# Microsoft Teams
+teams_max_requests = 20
+teams_time_window_seconds = 60.0
+
+# CRM (Salesforce, etc.)
+crm_max_requests = 15
+crm_time_window_seconds = 60.0
+
+[offline]
+# Enable offline mode and action queueing
+enabled = true
+queue_enabled = true
+auto_process_queue = true
+
+# Queue size and retry settings
+max_queue_size = 1000
+default_max_retries = 3
+default_expiration_hours = 24
+
+# Purge settings
+purge_completed_hours = 168  # Purge completed actions after 1 week
+check_interval_seconds = 60  # Check for service availability every 60s
+
+# ============================================================================
+# DATA RETENTION: Automatic cleanup to prevent disk saturation (TICKET-DATA-001)
+# ============================================================================
+
+[data_retention]
+# Retention periods in days (0 = unlimited, not recommended)
+memory_context_days = 30      # MemoryEngine context data
+memory_history_days = 30      # MemoryEngine history data
+semantic_vectors_days = 60    # ChromaDB vector store
+action_history_days = 90      # Action history for analytics/debugging
+workflow_states_days = 14     # Completed/failed workflow states
+audio_logs_days = 7           # Audio recordings for debugging
+safe_queue_days = 30          # Completed queue entries
+unified_store_days = 30       # UnifiedStore snapshots/clipboard/files
+
+# Storage limits
+max_total_size_mb = 2000      # Maximum total data size (triggers emergency cleanup)
+
+# Cleanup behavior
+auto_cleanup_on_startup = true              # Run cleanup at application start
+cleanup_check_interval_hours = 24           # Periodic cleanup interval
+
+

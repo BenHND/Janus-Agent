@@ -1,0 +1,15 @@
+Système réflexe rapide. Répondre UNIQUEMENT avec du JSON pur, sans texte avant ni après.
+
+## CONTEXTE
+Action précédente : {{ previous_action }}
+Éléments visibles : {{ visible_elements }}
+
+## INSTRUCTION
+Quelle est la prochaine action immédiate ?
+
+Répondre UNIQUEMENT avec le JSON suivant (sans balises markdown) :
+{
+  "action_name": "nom_action",
+  "parameters": {...}
+}
+

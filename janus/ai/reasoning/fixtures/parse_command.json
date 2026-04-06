@@ -1,0 +1,64 @@
+{
+  "description": "Fixtures for parse_command mock responses",
+  "patterns": {
+    "open_app": {
+      "keywords": ["ouvre", "lance", "open", "launch"],
+      "apps": ["chrome", "safari", "vscode"],
+      "response_template": {
+        "intents": [
+          {
+            "intent": "open_app",
+            "parameters": {
+              "app_name": "{app_name}"
+            },
+            "confidence": 0.9
+          }
+        ]
+      },
+      "fallback_response": {
+        "intents": [
+          {
+            "intent": "open_app",
+            "parameters": {},
+            "confidence": 0.8
+          }
+        ]
+      }
+    },
+    "paste": {
+      "keywords": ["colle", "paste"],
+      "response": {
+        "intents": [
+          {
+            "intent": "paste",
+            "parameters": {},
+            "confidence": 0.85
+          }
+        ]
+      }
+    },
+    "copy": {
+      "keywords": ["copie", "copy"],
+      "response": {
+        "intents": [
+          {
+            "intent": "copy",
+            "parameters": {},
+            "confidence": 0.85
+          }
+        ]
+      }
+    },
+    "default": {
+      "response": {
+        "intents": [
+          {
+            "intent": "unknown",
+            "parameters": {},
+            "confidence": 0.3
+          }
+        ]
+      }
+    }
+  }
+}

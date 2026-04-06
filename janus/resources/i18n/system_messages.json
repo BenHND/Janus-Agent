@@ -1,0 +1,32 @@
+{
+  "verification": {
+    "finish_error": {
+      "fr": "Tu pensais avoir fini, mais la vérification visuelle a détecté un problème : '{reason}'. Corrige cette erreur avant de déclarer la tâche terminée.",
+      "en": "You thought you were done, but visual verification detected an issue: '{reason}'. Fix this error before declaring the task complete."
+    },
+    "goal_achieved": {
+      "fr": "Objectif atteint - vérification IA confirme le succès",
+      "en": "Goal achieved - AI verification confirms success"
+    },
+    "goal_not_achieved": {
+      "fr": "Objectif NON atteint - IA détecte des problèmes : {answer}",
+      "en": "Goal NOT achieved - AI detected issues: {answer}"
+    },
+    "ambiguous_result": {
+      "fr": "Résultat de vérification ambigu : {answer}",
+      "en": "Ambiguous verification result: {answer}"
+    },
+    "error_detected": {
+      "fr": "Erreur visuelle détectée : {error_type}. L'objectif n'est pas atteint.",
+      "en": "Visual error detected: {error_type}. Goal not achieved."
+    },
+    "error_keywords_detected": {
+      "fr": "Mots-clés d'erreur détectés : {keywords}",
+      "en": "Error keywords detected: {keywords}"
+    },
+    "no_errors_detected": {
+      "fr": "Aucune erreur détectée - l'objectif semble atteint",
+      "en": "No errors detected - goal appears achieved"
+    }
+  }
+}

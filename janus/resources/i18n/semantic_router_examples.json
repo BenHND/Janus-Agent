@@ -1,0 +1,75 @@
+{
+  "comment": "Representative examples for SemanticRouter embedding-based classification (TICKET-ROUTER-001)",
+  "version": "1.0",
+  "categories": {
+    "NOISE": {
+      "description": "Politeness, affirmations, incomplete inputs",
+      "examples": {
+        "fr": [
+          "Bonjour",
+          "Merci",
+          "Salut",
+          "Ok",
+          "D'accord",
+          "Oui",
+          "Non",
+          "Au revoir",
+          "Bonsoir",
+          "Coucou"
+        ],
+        "en": [
+          "Thanks",
+          "Hello",
+          "Hi",
+          "Bye",
+          "Okay",
+          "Yeah",
+          "Yep",
+          "Nope"
+        ]
+      }
+    },
+    "CHAT": {
+      "description": "General conversation, questions, jokes",
+      "examples": {
+        "fr": [
+          "Qui est le président de la France",
+          "Comment faire un gâteau",
+          "Pourquoi le ciel est bleu",
+          "Raconte une blague",
+          "Quelle heure est-il",
+          "Quel temps fait-il"
+        ],
+        "en": [
+          "What is the weather today",
+          "Tell me a joke",
+          "Who is the president",
+          "How to make a cake"
+        ]
+      }
+    },
+    "ACTION": {
+      "description": "Commands requiring system actions",
+      "examples": {
+        "fr": [
+          "Ouvre Chrome",
+          "Ferme Safari",
+          "Cherche sur Google",
+          "Envoie un email",
+          "Lance VSCode",
+          "Copie le texte",
+          "Vérifie mes mails",
+          "Peux-tu check mes mails"
+        ],
+        "en": [
+          "Open Chrome",
+          "Close Safari",
+          "Search on Google",
+          "Check my emails",
+          "Send an email",
+          "Copy the text"
+        ]
+      }
+    }
+  }
+}

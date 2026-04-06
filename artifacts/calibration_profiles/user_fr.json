@@ -1,0 +1,20 @@
+{
+  "user_id": "user_fr",
+  "calibration_phrases": [
+    "Ouvre le navigateur Chrome",
+    "Copie le texte s\u00e9lectionn\u00e9",
+    "Lance l'application Visual Studio Code",
+    "Clique sur le bouton suivant",
+    "Ferme la fen\u00eatre actuelle"
+  ],
+  "voice_activation_threshold": 60.0,
+  "vad_aggressiveness": 2,
+  "silence_threshold": 20,
+  "ambient_noise_level": 100.0,
+  "sample_count": 0,
+  "language": "fr",
+  "noise_mean": 0.0,
+  "noise_variance": 0.0,
+  "last_recalibration": 0.0,
+  "recalibration_count": 0
+}

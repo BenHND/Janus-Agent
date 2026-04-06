@@ -1,0 +1,15 @@
+{
+  "description": "Fixtures for reflex action mock responses",
+  "patterns": {
+    "reflex_prompt": {
+      "keywords": ["système réflexe", "reflex system", "action précédente"],
+      "response": {
+        "action": "type_text",
+        "args": {
+          "text": "test"
+        },
+        "reasoning": "Mock reflex"
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+Analyze this text to detect if it indicates an error or failure.
+
+**Text to analyze:** {{ text }}
+
+**Instructions:**
+1. Carefully read the provided text
+2. Determine if it contains indicators of error, failure, or problems
+3. Typical indicators include: "error", "failed", "cannot", "not found", "invalid", etc.
+
+**IMPORTANT: Respond ONLY with valid JSON in this exact format:**
+
+{
+  "has_error": true,
+  "reason": "Clear explanation of the detected error"
+}
+
+Or if no error is detected:
+
+{
+  "has_error": false,
+  "reason": "The text appears normal with no error indication"
+}
+
+**Example responses:**
+- Error detected:
+{
+  "has_error": true,
+  "reason": "The text contains 'Page not found' indicating a 404 error"
+}
+
+- No error:
+{
+  "has_error": false,
+  "reason": "The text is informative and signals no problem"
+}
+
+**Your JSON response:**
+

@@ -1,0 +1,15 @@
+Fast reflex system. Respond ONLY with pure JSON, no text before or after.
+
+## CONTEXT
+Previous action: {{ previous_action }}
+Visible elements: {{ visible_elements }}
+
+## INSTRUCTION
+What is the immediate next action?
+
+Respond ONLY with the following JSON (no markdown tags):
+{
+  "action_name": "action_name",
+  "parameters": {...}
+}
+

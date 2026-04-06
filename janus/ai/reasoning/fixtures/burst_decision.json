@@ -1,0 +1,21 @@
+{
+  "description": "Fixtures for burst decision mock responses",
+  "patterns": {
+    "burst_prompt": {
+      "keywords": ["burst", "actions"],
+      "response": {
+        "actions": [
+          {
+            "module": "system",
+            "action": "done",
+            "args": {},
+            "reasoning": "Mock burst action"
+          }
+        ],
+        "stop_when": [],
+        "needs_vision": false,
+        "reasoning": "Mock burst response"
+      }
+    }
+  }
+}

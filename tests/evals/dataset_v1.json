@@ -1,0 +1,963 @@
+{
+  "version": "1.0",
+  "description": "Janus Evals Golden Set - 50 representative test cases for ReasonerLLM. Tests with 'requires_real_llm': true should be skipped when using mock backend.",
+  "categories": ["simple", "multi_step", "ambiguous", "contextual", "edge_case"],
+  "test_cases": [
+    {
+      "id": "simple_001",
+      "category": "simple",
+      "language": "fr",
+      "input": "ouvre Safari",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Safari"}
+          }
+        ]
+      },
+      "description": "Simple FR: Open Safari"
+    },
+    {
+      "id": "simple_002",
+      "category": "simple",
+      "language": "fr",
+      "input": "ouvre Chrome",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Chrome"}
+          }
+        ]
+      },
+      "description": "Simple FR: Open Chrome"
+    },
+    {
+      "id": "simple_003",
+      "category": "simple",
+      "language": "en",
+      "input": "open Safari",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Safari"}
+          }
+        ]
+      },
+      "description": "Simple EN: Open Safari"
+    },
+    {
+      "id": "simple_004",
+      "category": "simple",
+      "language": "en",
+      "input": "open Chrome",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Chrome"}
+          }
+        ]
+      },
+      "description": "Simple EN: Open Chrome"
+    },
+    {
+      "id": "simple_005",
+      "category": "simple",
+      "language": "fr",
+      "input": "copie",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "ui",
+            "action": "copy",
+            "args": {}
+          }
+        ]
+      },
+      "description": "Simple FR: Copy"
+    },
+    {
+      "id": "simple_006",
+      "category": "simple",
+      "language": "fr",
+      "input": "colle",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "ui",
+            "action": "paste",
+            "args": {}
+          }
+        ]
+      },
+      "description": "Simple FR: Paste"
+    },
+    {
+      "id": "simple_007",
+      "category": "simple",
+      "language": "en",
+      "input": "copy",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "ui",
+            "action": "copy",
+            "args": {}
+          }
+        ]
+      },
+      "description": "Simple EN: Copy"
+    },
+    {
+      "id": "simple_008",
+      "category": "simple",
+      "language": "en",
+      "input": "paste",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "ui",
+            "action": "paste",
+            "args": {}
+          }
+        ]
+      },
+      "description": "Simple EN: Paste"
+    },
+    {
+      "id": "simple_009",
+      "category": "simple",
+      "language": "fr",
+      "input": "cherche Python tutoriel",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "browser",
+            "action": "search",
+            "args": {"query": "Python tutoriel"}
+          }
+        ]
+      },
+      "description": "Simple FR: Search"
+    },
+    {
+      "id": "simple_010",
+      "category": "simple",
+      "language": "en",
+      "input": "search machine learning",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "browser",
+            "action": "search",
+            "args": {"query": "machine learning"}
+          }
+        ]
+      },
+      "description": "Simple EN: Search"
+    },
+    {
+      "id": "simple_011",
+      "category": "simple",
+      "language": "fr",
+      "input": "lance VSCode",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "VSCode"}
+          }
+        ]
+      },
+      "description": "Simple FR: Launch VSCode"
+    },
+    {
+      "id": "simple_012",
+      "category": "simple",
+      "language": "en",
+      "input": "launch Finder",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Finder"}
+          }
+        ]
+      },
+      "description": "Simple EN: Launch Finder"
+    },
+    {
+      "id": "multi_001",
+      "category": "multi_step",
+      "language": "fr",
+      "input": "ouvre Safari et va sur YouTube",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Safari"}
+          },
+          {
+            "module": "browser",
+            "action": "open_url",
+            "args": {"url": "https://www.youtube.com"}
+          }
+        ]
+      },
+      "description": "Multi-step FR: Open Safari and navigate to YouTube"
+    },
+    {
+      "id": "multi_002",
+      "category": "multi_step",
+      "language": "en",
+      "input": "open Chrome and go to YouTube",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Chrome"}
+          },
+          {
+            "module": "browser",
+            "action": "open_url",
+            "args": {"url": "https://www.youtube.com"}
+          }
+        ]
+      },
+      "description": "Multi-step EN: Open Chrome and navigate to YouTube"
+    },
+    {
+      "id": "multi_003",
+      "category": "multi_step",
+      "language": "fr",
+      "input": "ouvre Safari, va sur YouTube et cherche Python tutoriels",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Safari"}
+          },
+          {
+            "module": "browser",
+            "action": "open_url",
+            "args": {"url": "https://www.youtube.com"}
+          },
+          {
+            "module": "browser",
+            "action": "search",
+            "args": {"query": "Python tutoriels"}
+          }
+        ]
+      },
+      "description": "Multi-step FR: Open Safari, YouTube, search"
+    },
+    {
+      "id": "multi_004",
+      "category": "multi_step",
+      "language": "en",
+      "input": "open Chrome, go to YouTube and search Python tutorials",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Chrome"}
+          },
+          {
+            "module": "browser",
+            "action": "open_url",
+            "args": {"url": "https://www.youtube.com"}
+          },
+          {
+            "module": "browser",
+            "action": "search",
+            "args": {"query": "Python tutorials"}
+          }
+        ]
+      },
+      "description": "Multi-step EN: Open Chrome, YouTube, search"
+    },
+    {
+      "id": "multi_005",
+      "category": "multi_step",
+      "language": "fr",
+      "input": "ouvre Teams et envoie bonjour à l'équipe marketing",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Teams"}
+          },
+          {
+            "module": "messaging",
+            "action": "open_thread",
+            "args": {"name": "marketing"}
+          },
+          {
+            "module": "messaging",
+            "action": "send_message",
+            "args": {"message": "bonjour"}
+          }
+        ]
+      },
+      "description": "Multi-step FR: Teams messaging workflow"
+    },
+    {
+      "id": "multi_006",
+      "category": "multi_step",
+      "language": "en",
+      "input": "open Teams and send hello to marketing team",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Teams"}
+          },
+          {
+            "module": "messaging",
+            "action": "open_thread",
+            "args": {"name": "marketing"}
+          },
+          {
+            "module": "messaging",
+            "action": "send_message",
+            "args": {"message": "hello"}
+          }
+        ]
+      },
+      "description": "Multi-step EN: Teams messaging workflow"
+    },
+    {
+      "id": "multi_007",
+      "category": "multi_step",
+      "language": "fr",
+      "input": "ouvre Chrome, va sur GitHub, extrais le texte et résume-le",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Chrome"}
+          },
+          {
+            "module": "browser",
+            "action": "open_url",
+            "args": {"url": "https://github.com"}
+          },
+          {
+            "module": "browser",
+            "action": "extract_text",
+            "args": {}
+          },
+          {
+            "module": "llm",
+            "action": "summarize",
+            "args": {}
+          }
+        ]
+      },
+      "description": "Multi-step FR: Chrome -> GitHub -> extract -> summarize"
+    },
+    {
+      "id": "multi_008",
+      "category": "multi_step",
+      "language": "en",
+      "input": "open Safari, go to GitHub, extract text and summarize",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Safari"}
+          },
+          {
+            "module": "browser",
+            "action": "open_url",
+            "args": {"url": "https://github.com"}
+          },
+          {
+            "module": "browser",
+            "action": "extract_text",
+            "args": {}
+          },
+          {
+            "module": "llm",
+            "action": "summarize",
+            "args": {}
+          }
+        ]
+      },
+      "description": "Multi-step EN: Safari -> GitHub -> extract -> summarize"
+    },
+    {
+      "id": "multi_009",
+      "category": "multi_step",
+      "language": "fr",
+      "input": "ouvre Finder, va dans mes documents, ouvre presentation.pdf avec VSCode",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Finder"}
+          },
+          {
+            "module": "files",
+            "action": "search_files",
+            "args": {"query": "presentation.pdf"}
+          },
+          {
+            "module": "files",
+            "action": "open_file",
+            "args": {"app": "VSCode"}
+          }
+        ]
+      },
+      "description": "Multi-step FR: Finder file workflow"
+    },
+    {
+      "id": "multi_010",
+      "category": "multi_step",
+      "language": "en",
+      "input": "open Finder, go to documents, open report.pdf with VSCode",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Finder"}
+          },
+          {
+            "module": "files",
+            "action": "search_files",
+            "args": {"query": "report.pdf"}
+          },
+          {
+            "module": "files",
+            "action": "open_file",
+            "args": {"app": "VSCode"}
+          }
+        ]
+      },
+      "description": "Multi-step EN: Finder file workflow"
+    },
+    {
+      "id": "multi_011",
+      "category": "multi_step",
+      "language": "fr",
+      "input": "ouvre Salesforce, cherche le compte Acme Corp et mets à jour le statut en Closed Won",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Safari"}
+          },
+          {
+            "module": "browser",
+            "action": "open_url",
+            "args": {"url": "https://salesforce.com"}
+          },
+          {
+            "module": "crm",
+            "action": "search_records",
+            "args": {"query": "Acme Corp"}
+          },
+          {
+            "module": "crm",
+            "action": "update_field",
+            "args": {"field_name": "Status", "value": "Closed Won"}
+          }
+        ]
+      },
+      "description": "Multi-step FR: Salesforce CRM workflow"
+    },
+    {
+      "id": "multi_012",
+      "category": "multi_step",
+      "language": "en",
+      "input": "open Salesforce, search for Acme Corp and update status to Closed Won",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Safari"}
+          },
+          {
+            "module": "browser",
+            "action": "open_url",
+            "args": {"url": "https://salesforce.com"}
+          },
+          {
+            "module": "crm",
+            "action": "search_records",
+            "args": {"query": "Acme Corp"}
+          },
+          {
+            "module": "crm",
+            "action": "update_field",
+            "args": {"field_name": "Status", "value": "Closed Won"}
+          }
+        ]
+      },
+      "description": "Multi-step EN: Salesforce CRM workflow"
+    },
+    {
+      "id": "multi_013",
+      "category": "multi_step",
+      "language": "fr",
+      "input": "copie ce texte et colle-le dans VSCode",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "ui",
+            "action": "copy",
+            "args": {}
+          },
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "VSCode"}
+          },
+          {
+            "module": "ui",
+            "action": "paste",
+            "args": {}
+          }
+        ]
+      },
+      "description": "Multi-step FR: Copy and paste workflow"
+    },
+    {
+      "id": "multi_014",
+      "category": "multi_step",
+      "language": "en",
+      "input": "copy this and paste into VSCode",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "ui",
+            "action": "copy",
+            "args": {}
+          },
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "VSCode"}
+          },
+          {
+            "module": "ui",
+            "action": "paste",
+            "args": {}
+          }
+        ]
+      },
+      "description": "Multi-step EN: Copy and paste workflow"
+    },
+    {
+      "id": "ambiguous_001",
+      "category": "ambiguous",
+      "language": "fr",
+      "input": "va sur Google",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "browser",
+            "action": "open_url",
+            "args": {"url": "https://www.google.com"}
+          }
+        ]
+      },
+      "description": "Ambiguous FR: Navigate without explicit browser (infer browser action)"
+    },
+    {
+      "id": "ambiguous_002",
+      "category": "ambiguous",
+      "language": "en",
+      "input": "go to Google",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "browser",
+            "action": "open_url",
+            "args": {"url": "https://www.google.com"}
+          }
+        ]
+      },
+      "description": "Ambiguous EN: Navigate without explicit browser"
+    },
+    {
+      "id": "ambiguous_003",
+      "category": "ambiguous",
+      "language": "fr",
+      "input": "va sur YouTube",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "browser",
+            "action": "open_url",
+            "args": {"url": "https://www.youtube.com"}
+          }
+        ]
+      },
+      "description": "Ambiguous FR: Navigate to YouTube"
+    },
+    {
+      "id": "ambiguous_004",
+      "category": "ambiguous",
+      "language": "en",
+      "input": "go to YouTube",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "browser",
+            "action": "open_url",
+            "args": {"url": "https://www.youtube.com"}
+          }
+        ]
+      },
+      "description": "Ambiguous EN: Navigate to YouTube"
+    },
+    {
+      "id": "ambiguous_005",
+      "category": "ambiguous",
+      "language": "fr",
+      "input": "va sur github.com",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "browser",
+            "action": "open_url",
+            "args": {"url": "https://github.com"}
+          }
+        ]
+      },
+      "description": "Ambiguous FR: Navigate to GitHub"
+    },
+    {
+      "id": "ambiguous_006",
+      "category": "ambiguous",
+      "language": "en",
+      "input": "go to github.com",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "browser",
+            "action": "open_url",
+            "args": {"url": "https://github.com"}
+          }
+        ]
+      },
+      "description": "Ambiguous EN: Navigate to GitHub"
+    },
+    {
+      "id": "ambiguous_007",
+      "category": "ambiguous",
+      "language": "fr",
+      "input": "résume la page",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "browser",
+            "action": "extract_text",
+            "args": {}
+          },
+          {
+            "module": "llm",
+            "action": "summarize",
+            "args": {}
+          }
+        ]
+      },
+      "description": "Ambiguous FR: Summarize page (infer extract then summarize)"
+    },
+    {
+      "id": "ambiguous_008",
+      "category": "ambiguous",
+      "language": "en",
+      "input": "summarize this page",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "browser",
+            "action": "extract_text",
+            "args": {}
+          },
+          {
+            "module": "llm",
+            "action": "summarize",
+            "args": {}
+          }
+        ]
+      },
+      "description": "Ambiguous EN: Summarize page"
+    },
+    {
+      "id": "contextual_001",
+      "category": "contextual",
+      "language": "fr",
+      "input": "ouvre Safari et va sur GitHub",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Safari"}
+          },
+          {
+            "module": "browser",
+            "action": "open_url",
+            "args": {"url": "https://github.com"}
+          }
+        ]
+      },
+      "description": "Contextual FR: Safari + GitHub navigation"
+    },
+    {
+      "id": "contextual_002",
+      "category": "contextual",
+      "language": "en",
+      "input": "open Chrome and go to GitHub",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Chrome"}
+          },
+          {
+            "module": "browser",
+            "action": "open_url",
+            "args": {"url": "https://github.com"}
+          }
+        ]
+      },
+      "description": "Contextual EN: Chrome + GitHub navigation"
+    },
+    {
+      "id": "contextual_003",
+      "category": "contextual",
+      "language": "fr",
+      "input": "ouvre Chrome et va sur Google",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Chrome"}
+          },
+          {
+            "module": "browser",
+            "action": "open_url",
+            "args": {"url": "https://www.google.com"}
+          }
+        ]
+      },
+      "description": "Contextual FR: Chrome + Google"
+    },
+    {
+      "id": "contextual_004",
+      "category": "contextual",
+      "language": "en",
+      "input": "open Safari and go to Google",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Safari"}
+          },
+          {
+            "module": "browser",
+            "action": "open_url",
+            "args": {"url": "https://www.google.com"}
+          }
+        ]
+      },
+      "description": "Contextual EN: Safari + Google"
+    },
+    {
+      "id": "contextual_005",
+      "category": "contextual",
+      "language": "fr",
+      "input": "ouvre VSCode",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "VSCode"}
+          }
+        ]
+      },
+      "description": "Contextual FR: Open VSCode"
+    },
+    {
+      "id": "contextual_006",
+      "category": "contextual",
+      "language": "en",
+      "input": "open Terminal",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Terminal"}
+          }
+        ]
+      },
+      "description": "Contextual EN: Open Terminal"
+    },
+    {
+      "id": "edge_001",
+      "category": "edge_case",
+      "language": "fr",
+      "input": "ouvre",
+      "expected_plan": {
+        "steps": []
+      },
+      "description": "Edge case FR: Incomplete command (should handle gracefully)"
+    },
+    {
+      "id": "edge_002",
+      "category": "edge_case",
+      "language": "en",
+      "input": "open",
+      "expected_plan": {
+        "steps": []
+      },
+      "description": "Edge case EN: Incomplete command"
+    },
+    {
+      "id": "edge_003",
+      "category": "edge_case",
+      "language": "fr",
+      "input": "   ",
+      "expected_plan": {
+        "steps": []
+      },
+      "description": "Edge case: Whitespace only"
+    },
+    {
+      "id": "edge_004",
+      "category": "edge_case",
+      "language": "en",
+      "input": "",
+      "expected_plan": {
+        "steps": []
+      },
+      "description": "Edge case: Empty string"
+    },
+    {
+      "id": "simple_013",
+      "category": "simple",
+      "language": "fr",
+      "input": "ouvre Firefox",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Firefox"}
+          }
+        ]
+      },
+      "description": "Simple FR: Open Firefox"
+    },
+    {
+      "id": "simple_014",
+      "category": "simple",
+      "language": "en",
+      "input": "open Firefox",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Firefox"}
+          }
+        ]
+      },
+      "description": "Simple EN: Open Firefox"
+    },
+    {
+      "id": "simple_015",
+      "category": "simple",
+      "language": "fr",
+      "input": "ouvre Slack",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Slack"}
+          }
+        ]
+      },
+      "description": "Simple FR: Open Slack"
+    },
+    {
+      "id": "simple_016",
+      "category": "simple",
+      "language": "en",
+      "input": "open Slack",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Slack"}
+          }
+        ]
+      },
+      "description": "Simple EN: Open Slack"
+    },
+    {
+      "id": "simple_017",
+      "category": "simple",
+      "language": "fr",
+      "input": "ouvre Notes",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Notes"}
+          }
+        ]
+      },
+      "description": "Simple FR: Open Notes app"
+    },
+    {
+      "id": "simple_018",
+      "category": "simple",
+      "language": "en",
+      "input": "open Calendar",
+      "expected_plan": {
+        "steps": [
+          {
+            "module": "system",
+            "action": "open_application",
+            "args": {"app_name": "Calendar"}
+          }
+        ]
+      },
+      "description": "Simple EN: Open Calendar app"
+    }
+  ]
+}
