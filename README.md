@@ -4,8 +4,8 @@
 >
 > 🌐 Website: https://janus-agent.com/
 
-<img src="[https://github.com/user-attachments/assets/65c65ead-f6f1-4370-a6df-916f92fc3e2e](https://github-production-user-asset-6210df.s3.amazonaws.com/11156327/574158500-65c65ead-f6f1-4370-a6df-916f92fc3e2e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20260407%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260407T114755Z&X-Amz-Expires=300&X-Amz-Signature=06788468f19e169a80fb7c81158ff1776738b503619a857dfdcc04ab8ad0cdc8&X-Amz-SignedHeaders=host)" alt="Janus main assistant interface" width="400">
-<img src="[https://github.com/user-attachments/assets/aebcda16-2941-4f80-99eb-0a3f2902ec04](https://github-production-user-asset-6210df.s3.amazonaws.com/11156327/574158499-aebcda16-2941-4f80-99eb-0a3f2902ec04.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20260407%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260407T114837Z&X-Amz-Expires=300&X-Amz-Signature=a979b778ecd223b2806c56a46d42187af05c6ba2897dc91bd0dfe97853dff318&X-Amz-SignedHeaders=host)" alt="Janus interface alternate view" width="400">
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/11156327/574158500-65c65ead-f6f1-4370-a6df-916f92fc3e2e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20260407%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260407T114755Z&X-Amz-Expires=300&X-Amz-Signature=06788468f19e169a80fb7c81158ff1776738b503619a857dfdcc04ab8ad0cdc8&X-Amz-SignedHeaders=host" alt="Janus main assistant interface" width="400">
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/11156327/574158499-aebcda16-2941-4f80-99eb-0a3f2902ec04.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20260407%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260407T114837Z&X-Amz-Expires=300&X-Amz-Signature=a979b778ecd223b2806c56a46d42187af05c6ba2897dc91bd0dfe97853dff318&X-Amz-SignedHeaders=host" alt="Janus interface alternate view" width="400">
 
 **Voice-controlled computer automation for macOS**
 
